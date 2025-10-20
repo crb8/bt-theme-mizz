@@ -1,7 +1,16 @@
-name: Build & Publish to jsDelivr
+name: Build & Publish bt-theme-mizz (jsDelivr)
+
 on:
   push:
     branches: [ main ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-bt-theme-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -13,19 +22,37 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
       - run: npm ci
       - run: npm run build
+
       - name: Commit dist if changed
+        id: commitdist
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dist || true
-          git diff --quiet --cached || git commit -m "auto(build): update dist [skip ci]"
-      - name: Push back to main (if any change)
-        run: |
-          git push || true
+          if ! git diff --quiet --cached; then
+            git commit -m "auto(theme): update dist [skip ci]"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push back to main
+        if: steps.commitdist.outputs.changed == 'true'
+        run: git push
+
       - name: Purge jsDelivr cache
+        if: steps.commitdist.outputs.changed == 'true'
         run: |
-          # ajuste os caminhos conforme seu repo
           curl -s "https://purge.jsdelivr.net/gh/crb8/bt-theme-mizz@main/dist/bt-overrides.mizz.v1.css"
-          curl -s "https://purge.jsdelivr.net/gh/crb8/bt-core@main/dist/bt-boot.v2.js"
+          curl -s "https://purge.jsdelivr.net/gh/crb8/bt-theme-mizz@main/dist/"
