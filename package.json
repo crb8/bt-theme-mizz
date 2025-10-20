@@ -1,0 +1,13 @@
+{
+  "name": "bt-theme-mizz",
+  "version": "1.0.0",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "build": "vite build",
+    "release:prep": "npm run build && git add dist && git commit -m \"build(theme-mizz): dist for release\" || echo nochange"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
