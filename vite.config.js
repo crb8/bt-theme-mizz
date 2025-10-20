@@ -1,17 +1,16 @@
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default {
   build: {
-    sourcemap: false,
-    emptyOutDir: false,
+    outDir: "dist",
+    emptyOutDir: true,
     rollupOptions: {
-      input: {
-        "bt-overrides.mizz.v1": "src/theme/bt-overrides.mizz.v1.css"
-      },
+      input: "./src/theme/bt-overrides.mizz.v1.css",
       output: {
-        assetFileNames: "[name].[hash][extname]"
-      }
+        // Gera nome estável para CDN com sufixo ".v1"
+        assetFileNames: "bt-overrides.mizz.v1[extname]",
+      },
     },
-    outDir: "dist"
-  }
-});
+  },
+};
+
