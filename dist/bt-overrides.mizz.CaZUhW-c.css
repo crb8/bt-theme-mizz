@@ -1,1 +1,0 @@
-:root[data-bt=mizz]{--bt-bg:#0f1115;--bt-surface:#151922;--bt-text:#e9edf5;--bt-border:#2a3240;--bt-primary:#b26ef0;--bt-link:#8ab4f8}:root[data-bt=mizz],:root[data-bt=mizz] body{background:var(--bt-bg);color:var(--bt-text)}:root[data-bt=mizz] .header,:root[data-bt=mizz] .menu{background:var(--bt-surface);border-bottom:1px solid var(--bt-border)}
