@@ -1,5 +1,5 @@
 /* Overrides do cliente Mizz — escopo por data-bt */
-:root[data-bt="mizz"] {
+:root[data-bt='mizz'] {
   --bt-bg: #fff;
   --bt-surface: #151922;
   --bt-text: #111;
@@ -7,22 +7,21 @@
   --bt-black: #111;
 }
 
-:root[data-bt="mizz"],
-:root[data-bt="mizz"] body {
+:root[data-bt='mizz'],
+:root[data-bt='mizz'] body {
   background: var(--bt-bg);
   color: var(--bt-text);
 }
 
-:root[data-bt="mizz"] .header,
-:root[data-bt="mizz"] .menu {
+:root[data-bt='mizz'] .header,
+:root[data-bt='mizz'] .menu {
   background: var(--bt-surface);
   border-bottom: 1px solid var(--bt-border);
 }
 
 /* adicione seletores específicos conforme necessário */
 
-
-#frm-search button[type="submit"] {
+#frm-search button[type='submit'] {
   background-color: var(--bt-black, #111) !important;
   border-color: var(--bt-black, #111) !important;
   color: #f5f5f5 !important;
@@ -39,14 +38,15 @@ div.header-bottom.bg-footer-default-color #nav-root li {
 
 /* Banner página categorias */
 .imagem-banner {
-	img{
-		width: 100% !important;
-		max-width: 1240px !important;
-	}
+  img {
+    width: 100% !important;
+    max-width: 1240px !important;
+  }
 }
 
-.informacoes-compra-produto{
-	h1{
-		font-weight: 700 !important;
-	}
+.informacoes-compra-produto {
+  h1 {
+    font-weight: 700 !important;
+    padding-top: 10px !important;
+  }
 }
