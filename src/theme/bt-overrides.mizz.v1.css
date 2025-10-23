@@ -44,3 +44,9 @@ div.header-bottom.bg-footer-default-color #nav-root li {
 		max-width: 1240px !important;
 	}
 }
+
+.informacoes-compra-produto{
+	h1{
+		font-weight: 700 !important;
+	}
+}
