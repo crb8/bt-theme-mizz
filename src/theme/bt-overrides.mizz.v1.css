@@ -38,15 +38,11 @@ div.header-bottom.bg-footer-default-color #nav-root li {
 }
 
 /* Banner página categorias */
-.imagem-banner {
-	img{
-		width: 100% !important;
-		max-width: 1240px !important;
-	}
+.imagem-banner img {
+  width: 100% !important;
+  max-width: 1240px !important;
 }
 
-.informacoes-compra-produto{
-	h1{
-		font-weight: 700 !important;
-	}
+.informacoes-compra-produto h1 {
+  font-weight: 700 !important;
 }

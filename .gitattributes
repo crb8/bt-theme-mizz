@@ -40,6 +40,8 @@
 *.mp4 binary
 *.mov binary
 *.pdf binary
+*.exe binary
+*.node binary
 
 # -------------------------------------------------------------------
 # 🔧 Dica:
