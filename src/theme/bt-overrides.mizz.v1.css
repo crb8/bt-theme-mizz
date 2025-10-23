@@ -40,7 +40,7 @@ div.header-bottom.bg-footer-default-color #nav-root li {
 /* Banner página categorias */
 .imagem-banner {
 	img{
-		width: 100%;
-		max-width: 1240px;
+		width: 100% !important;
+		max-width: 1240px !important;
 	}
 }
