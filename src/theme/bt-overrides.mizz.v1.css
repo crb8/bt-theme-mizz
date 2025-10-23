@@ -36,3 +36,11 @@ div.header-bottom.bg-footer-default-color #nav-root {
 div.header-bottom.bg-footer-default-color #nav-root li {
   text-transform: uppercase !important;
 }
+
+/* Banner página categorias */
+.imagem-banner {
+	img{
+		width: 100%;
+		max-width: 1240px;
+	}
+}
