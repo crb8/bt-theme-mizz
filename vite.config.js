@@ -1,15 +1,32 @@
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
 
-export default {
+export default defineConfig({
   build: {
-    outDir: "dist",
+    outDir: 'dist',
     emptyOutDir: true,
+    assetsInlineLimit: 0,
     rollupOptions: {
-      input: "./src/theme/bt-overrides.mizz.v1.css",
+      input: {
+        boot: 'src/boot/index.js',
+        theme: 'src/theme/bt-overrides.mizz.v1.css',
+      },
       output: {
-        // Gera nome estável para CDN com sufixo ".v1"
-        assetFileNames: "bt-overrides.mizz.v1[extname]",
+        format: 'es',
+        entryFileNames: chunkInfo => {
+          if (chunkInfo.name === 'boot') {
+            return 'bt-boot.mizz.v1.js';
+          }
+          return '[name].js';
+        },
+        chunkFileNames: 'chunks/mizz-[name].js',
+        assetFileNames: assetInfo => {
+          if (assetInfo.name?.endsWith('.css')) {
+            return 'bt-overrides.mizz.v1.css';
+          }
+          return 'assets/[name][extname]';
+        },
+        inlineDynamicImports: false,
       },
     },
   },
-};
+});
